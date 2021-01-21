@@ -1,0 +1,14 @@
+{% include 'partials/_navbar.html' %}
+
+{% if photographer_list %}
+    <ul>
+    {% for photographer in photographer_list %}
+        <li>{{ photographer.first_name}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No photographers are available.</p>
+{% endif %}
+
+{% include 'partials/_contact.html' %}
+{% include 'partials/_footer.html' %}

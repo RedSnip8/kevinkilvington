@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+from .models import Photographer
 
 
 def about(request):
-    return HttpResponse("This is the about page")
+    photographer_list = Photographer.objects.order_by('id')[:1]
+    context = {'photographer_list': photographer_list}
+    return render(request, 'about/about.html', context)
