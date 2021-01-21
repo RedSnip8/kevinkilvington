@@ -1,9 +1,0 @@
-{% extends "admin/base.html" %}
-
-{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
-
-{% block branding %}
-<h1 id="Kevin_Kilvington"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Kevin Kilvington Admin') }}</a></h1>
-{% endblock %}
-
-{% block nav-global %}{% endblock %}

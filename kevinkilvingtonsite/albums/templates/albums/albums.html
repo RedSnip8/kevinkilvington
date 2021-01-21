@@ -2,10 +2,10 @@
 
 {% block content %}
 
-{% if latest_photos_list %}
+{% if albums_list %}
     <ul>
-    {% for picture in latest_photos_list %}
-        <li><a href="/home/{{ picture.id }}">{{ picture.photo_img}}</a></li>
+    {% for album in latest_photos_list %}
+        <li><a href="/home/{{ album.id }}">{{ album.photo_img}}</a></li>
     {% endfor %}
     </ul>
 {% else %}

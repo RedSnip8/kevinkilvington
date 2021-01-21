@@ -1,4 +1,6 @@
-{% include 'partials/_navbar.html' %}
+{% extends "partials/base_page.html" %}
+
+{% block content %}
 
 {% if photographer_list %}
     <ul>
@@ -10,5 +12,4 @@
     <p>No photographers are available.</p>
 {% endif %}
 
-{% include 'partials/_contact.html' %}
-{% include 'partials/_footer.html' %}
+{% endblock %}

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'about.apps.AboutConfig',
     'prices.apps.PricesConfig',
+    'albums.app.AlbumsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
