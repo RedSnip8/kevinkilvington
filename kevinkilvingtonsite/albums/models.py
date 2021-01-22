@@ -1,3 +1,7 @@
 from django.db import models
+from django.db.models import CharField
+from django.db.models.fields import BooleanField, CharField
 
-# Create your models here.
+class Album(models.Model):
+    Album_name = CharField(max_length=100)
+    is_active = BooleanField(default=True)

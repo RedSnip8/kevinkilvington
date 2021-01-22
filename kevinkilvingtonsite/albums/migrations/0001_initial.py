@@ -12,14 +12,11 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Photographer',
+            name='Album',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=50)),
-                ('last_name', models.CharField(max_length=50)),
-                ('bio', models.TextField(max_length=1000)),
-                ('photo', models.ImageField(upload_to='images/%Y/%m/%d/')),
-                ('is_active', models.BooleanField(default=False)),
+                ('Album_name', models.CharField(max_length=100)),
+                ('is_active', models.BooleanField(default=True)),
             ],
         ),
     ]
