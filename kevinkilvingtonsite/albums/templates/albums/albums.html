@@ -4,7 +4,7 @@
 
 {% if albums_list %}
     <ul>
-    {% for album in latest_photos_list %}
+    {% for album in albums_list %}
         <li><a href="/home/{{ album.id }}">{{ album.photo_img}}</a></li>
     {% endfor %}
     </ul>
