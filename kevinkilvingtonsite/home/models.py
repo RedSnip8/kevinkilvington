@@ -5,6 +5,7 @@ from albums.models import Album
 
 
 class Picture(models.Model):
+    Album
     client_name = CharField(max_length=100, blank=True)
     photo_name = CharField(max_length=50, blank=True)
     photo_album = ForeignKey(Album, on_delete=models.CASCADE, blank=True, null=True)
