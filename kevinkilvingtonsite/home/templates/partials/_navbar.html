@@ -1,15 +1,20 @@
 {% load static %}
 <!-- NavBar -->
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-    <img src="/kevinkilvingtonsite/assets/K Squared Logo BLACK.png" alt="">
-    <a class="">K Squared Photography</a>
+   <a class="navbar-brand mx-auto" href="#">
+    <img src="{% static 'img/Logo_black_ksquared.svg' %}" width="40" height="40" class="d-inline-block" alt="">
+    <span class="h6 pl-2 align-middle">KSquared Photography</span>
+  </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse mx-auto px-3" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Photos <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Albums</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
