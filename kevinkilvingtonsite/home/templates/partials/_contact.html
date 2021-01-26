@@ -20,27 +20,7 @@
                         {% csrf_token %}
                         <input type="hidden" name="page" value="{{ request.path }}">
                         
-                        <div class="form-group">
-                            <label for="f_name" class="col-form-label">First Name:</label>
-                            <input type="text" name="f_name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="l_name" class="col-form-label">Last Name:</label>
-                            <input type="text" name="l_name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email_address" class="col-form-label">Email Address:</label>
-                            <input type="email" name="email_address" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone_number" class="col-form-label">Phone Number:</label>
-                            <input type="text" name="phone_number" class="form-control" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="client_notes" class="col-form-label">Notes:</label>
-                            <textarea name="client_notes" class="form-control"></textarea>
-                        </div>
+                        {{ form }}
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -51,3 +31,15 @@
             </div>
         </div>
     </div>
+</div>
+<form action="{% url 'contact' %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="page" value="{{ request.path }}">
+    
+    {{ form }}
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </div>
+</form>
