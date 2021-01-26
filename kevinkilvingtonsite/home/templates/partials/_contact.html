@@ -9,19 +9,45 @@
     <!-- Modal -->
     <div class="modal fade" id="requestModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="ModalLabel">Request for Information</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Request for Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{% url 'contact' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="page" value="{{ request.path }}">
+                        
+                        <div class="form-group">
+                            <label for="f_name" class="col-form-label">First Name:</label>
+                            <input type="text" name="f_name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="l_name" class="col-form-label">Last Name:</label>
+                            <input type="text" name="l_name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email_address" class="col-form-label">Email Address:</label>
+                            <input type="email" name="email_address" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number" class="col-form-label">Phone Number:</label>
+                            <input type="text" name="phone_number" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="client_notes" class="col-form-label">Notes:</label>
+                            <textarea name="client_notes" class="form-control"></textarea>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <input type="submit" value="Submit" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="modal-body">
-            ...
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
         </div>
     </div>
-</div>
