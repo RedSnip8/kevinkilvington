@@ -1,0 +1,32 @@
+{% extends "partials/base_page.html" %}
+
+{% block title %}Contact{% endblock %}
+{% load static %}
+{% block content %}
+    
+    <!-- Form -->
+<div class="d-flex justify-content-center">
+    <form action="{% url 'contact' %}" method="POST" role="form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="fieldWrapper form-group my-2">
+                {{ field.error }}
+                <label for="{{ form.f_name.id_for_label }}">
+                    {{ field.label }}
+                </label>
+                {{ field }}
+                {% if field.name == "email_address" %}
+                <small id="emailHelp" class="form-text text-muted">I will never share your email with anyone else.</small>
+                {% endif %}
+            </div>
+        {% endfor %}
+    
+        <div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

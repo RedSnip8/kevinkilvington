@@ -1,5 +1,6 @@
+{% load static %}
 {% extends "partials/base_page.html" %}
-
+{% block title %}{{ album.id }}{% endblock %}
 {% block content %}
 
 {% if photos_list %}
