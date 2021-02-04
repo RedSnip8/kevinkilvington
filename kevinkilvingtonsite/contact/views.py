@@ -19,7 +19,7 @@ def contact(request):
             contact.email_address = form.cleaned_data['email_address']
             contact.phone_number = form.cleaned_data['phone_number']
             contact.client_notes = form.cleaned_data['client_notes']           
-            print(contact)
+
             contact.save
             return HttpResponseRedirect('/contact')
 
