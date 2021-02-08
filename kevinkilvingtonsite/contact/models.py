@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.core.validators import RegexValidator
 
 from django.db.models.fields import CharField, DateTimeField, EmailField, TextField
 
@@ -10,6 +11,3 @@ class Contact(models.Model):
     phone_number = CharField(max_length=10)
     client_notes = TextField(blank=True)
     request_date = DateTimeField(default=datetime.now, blank=True)
-
-    def __str__(self) -> str:
-        return (self.f_name + " " + self.l_name)

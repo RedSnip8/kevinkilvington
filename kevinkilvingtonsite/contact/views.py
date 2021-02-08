@@ -1,6 +1,8 @@
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
+from django.utils import timezone
+
 from .models import Contact
 
 from .forms import ContactForm
@@ -8,19 +10,19 @@ from .forms import ContactForm
 def contact(request):
 
     if request.method == 'POST':
-        print('works here')
         form = ContactForm(request.POST)
 
         if form.is_valid():
-            print('its valid')
-            contact = Contact()
-            contact.f_name = form.cleaned_data['f_name']
-            contact.l_name = form.cleaned_data['l_name']
-            contact.email_address = form.cleaned_data['email_address']
-            contact.phone_number = form.cleaned_data['phone_number']
-            contact.client_notes = form.cleaned_data['client_notes']           
-
-            contact.save
+            new_contact = Contact(
+            f_name = form.cleaned_data['f_name'],
+            l_name = form.cleaned_data['l_name'],
+            email_address = form.cleaned_data['email_address'],
+            phone_number = form.cleaned_data['phone_number'],
+            client_notes = form.cleaned_data['client_notes'],
+            request_date = timezone.now(),         
+            )
+            new_contact.save()
+            
             return HttpResponseRedirect('/contact')
 
     else:
