@@ -4,11 +4,20 @@
 {% block content %}
 
 {% if latest_photos_list %}
-    <ul>
+<header class="text-center">
+    <h1> KEVIN KILVINGTON PHOTO</h1>
+</header>   
+<div class="grid">
+            
     {% for picture in latest_photos_list %}
-        <li><a href="/home/{{ picture.id }}">{{ picture.photo_img}}</a></li>
+    <div class="grid-item">
+       <a href="{{ picture.photo_img.url }}"  data-lightbox="home-photos">
+        <img src="{{ picture.photo_img.url }}" class="card-img-top"></img>
+       </a>
+    </div>
     {% endfor %}
-    </ul>
+
+</div>
 {% else %}
     <p>No photos are available.</p>
 {% endif %}
