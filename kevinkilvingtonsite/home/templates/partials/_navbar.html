@@ -1,13 +1,13 @@
 {% load static %}
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light px-3">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light px-2">
    <a class="navbar-brand" href="{% url 'home' %}">
-    <img src="{% static 'img/Logo_black_ksquared.svg' %}" width="40" height="40" class="d-inline-block" alt="">
+    <img src="{% static 'img/Logo_black_ksquared.svg' %}" width="40" height="40" class="d-inline-block" alt="K Squared Photohraphy Logo">
     <span class="h6 px-1 align-middle">KSquared Photography</span>
   </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavalt" aria-controls="navbarNavalt" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse mx-auto px-3" id="navbarNavalt">
+      <div class="collapse navbar-collapse mx-auto px-3 justify-content-end" id="navbarNavalt">
         <ul class="navbar-nav">
           <li
           {% if '/' == request.path %}
@@ -16,7 +16,7 @@
             class="nav-item mr-3"
           {% endif %}
         >
-            <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
           </li>
 
 

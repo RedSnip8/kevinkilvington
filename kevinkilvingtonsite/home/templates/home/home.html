@@ -1,17 +1,26 @@
 {% extends "partials/base_page.html" %}
 {% block title %}Home{% endblock %}
-
+ {% load static %}
 {% block content %}
+
+<div class="container justify-content-center my-4">
+    <div class="row">
+            <img src="{% static 'img/Logo_black_ksquared.svg' %}" width="100" height="100" class='' alt="K Squared Photohraphy Logo">
+    </div>
+
+    <div class="row">
+            <h2 class="h6 text-center">KSquared Photography</h2>
+    </div>
+</div>
 
 <div class="container">
     {% if latest_photos_list %}
-        <h1> KEVIN KILVINGTON PHOTO</h1>
     <div class="grid">
                 
         {% for picture in latest_photos_list %}
         <div class="grid-item">
         <a href="{{ picture.photo_img.url }}"  data-lightbox="home-photos">
-            <img src="{{ picture.photo_img.url }}" class="card-img-top"></img>
+            <img src="{{ picture.photo_img.url }}" class="card-img-top p-1"></img>
         </a>
         </div>
         {% endfor %}
