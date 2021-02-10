@@ -10,5 +10,12 @@ p {
     text-decoration: underline;
 }
 
+
 .grid-item { width: 200px; }
 .grid-item--width2 { width: 400px; }
+
+.profile_photo {
+    border-radius: 2%;
+    width: 20vw;
+    min-width: 200px;
+}

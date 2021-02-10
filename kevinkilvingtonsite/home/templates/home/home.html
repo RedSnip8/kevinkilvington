@@ -13,12 +13,12 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container mx-auto mb-3">
     {% if latest_photos_list %}
-    <div class="grid">
+    <div class="grid p-0 mx-auto">
                 
         {% for picture in latest_photos_list %}
-        <div class="grid-item">
+        <div class="grid-item--width2">
         <a href="{{ picture.photo_img.url }}"  data-lightbox="home-photos">
             <img src="{{ picture.photo_img.url }}" class="card-img-top p-1"></img>
         </a>

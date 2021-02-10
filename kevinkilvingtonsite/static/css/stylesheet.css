@@ -1,9 +1,21 @@
-
-
 body{
-    font-family: 'Courier New', monospace !important;
+    font-family: 'Helvetica', sans-serif !important;
 }
 
-:is(h1, h2, h3, h4, h5, h6) {
-    font-family: 'Helvetica', sans-serif;
+p {
+    font-family: 'Courier', monospace;
+}
+
+.active {
+    text-decoration: underline;
+}
+
+.grid-item { width: 200px; }
+.grid-item--width2 { width: 400px; }
+
+.profile_photo {
+    display: block;
+    border-radius: 2%;
+    width: 20vw;
+    min-width: 200px;
 }
