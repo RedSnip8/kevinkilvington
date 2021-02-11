@@ -9,20 +9,27 @@
     </div>
 </div>
 
-<div class="container">
-{% if cover_photo %}
-    {% for album in cover_photo %}
-    <div class="card bg-dark text-white">
-        <img src="{{ album.photo_img.url }}" class="card-img" alt="...">
-        <div class="card-img-overlay">
-          <h5 class="card-title">{{ album.photo_album.Album_name }}</h5>
+<div class="container content-row">
+    <div class="row">
+    {% if cover_photo %}
+        {% for album in cover_photo %}
+        <div id="album_preview" class="col-md-6 col-lg-4 mb-4">
+            <a href="{% url 'events' album.photo_album.id %}">
+                <div class="card bg-dark text-white text-center">
+                    <img src="{{ album.photo_img.url }}" class="card-img" alt="...">
+                    <div class="card-img-overlay d-flex">
+                    <h3 class="card-title align-self-center mx-auto"><span class="bg-dark px-2 py-1 rounded"><u>{{ album.photo_album.Album_name }}</u></span></h3>
+                    </div>
+                </div>
+            </a>
         </div>
-      </div>
-    {% endfor %}
 
-{% else %}
-    <p>No Albums are available.</p>
-{% endif %}
+        {% endfor %}
+
+    {% else %}
+        <p>No Albums are available.</p>
+    {% endif %}
+    </div>
 </div>
 
 {% endblock %}

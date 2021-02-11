@@ -10,12 +10,24 @@ p {
     text-decoration: underline;
 }
 
+
 .grid-item { width: 200px; }
 .grid-item--width2 { width: 400px; }
 
 .profile_photo {
-    display: block;
     border-radius: 2%;
     width: 20vw;
     min-width: 200px;
+}
+
+#album_preview div {
+    overflow: hidden;
+    border: none;
+}
+
+#album_preview div img {
+    height: 90vmax;
+    width: auto;
+    max-height: 300px;
+    object-fit: cover;
 }
