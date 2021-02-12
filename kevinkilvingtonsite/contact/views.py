@@ -2,6 +2,7 @@ from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.utils import timezone
+from django.contrib import messages
 
 from .models import Contact
 
@@ -22,13 +23,17 @@ def contact(request):
             request_date = timezone.now(),         
             )
             new_contact.save()
+
             
-            return HttpResponseRedirect('/contact')
+            messages.success(request, 'Thank you, I will reach out to you as soon as I can!')
+            return HttpResponseRedirect('/contact', {'new_contact': new_contact})
 
     else:
         form = ContactForm()
 
     return render(request, 'contact/contact.html', {'form': form})
+
+    
 
 
 
