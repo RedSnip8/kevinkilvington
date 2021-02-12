@@ -5,38 +5,42 @@
 
 {% block content %}
 
-{% if album_selected %}
-    {% for album in album_name %}
+<!-- Bredcrumbs -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'albums' %}">Albums</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ album_name.0 }}</li>
+    </ol>
+</nav>
+
+
 <div class="container justify-content-center my-4">
     <div class="row">
-            <h2 class="h2 text-center">{{ album.Album_name }}</h2>
+            <h2 class="h2 text-center">{{ album_name.0 }}</h2>
     </div>
 </div>
-{% endfor %}
 
-<div class="container mx-auto mb-3">
-    <div class="grid p-0 mx-auto">
-        {% for picture in album_selected %}
-        <div class="grid-item--width2">
-            <a href="{{ picture.photo_img.url }}"  data-lightbox="home-photos">
-                <p>{{ picture.event_name.event_name }}</p>
-                <img src="{{ picture.photo_img.url }}" class="card-img-top p-1"></img>
+<div class="container content-row">
+    <div class="row">
+    {% if album_selected %}
+        {% for event in album_selected %}
+        <div id="album_preview" class="col-md-6 col-lg-4 mb-4">
+            <a href="{% url 'event' event.event_name.id %}">
+                <div class="card bg-dark text-white text-center">
+                    <img src="{{ event.photo_img.url }}" class="card-img" alt="...">
+                    <div class="card-img-overlay d-flex">
+                    <h3 class="card-title align-self-center mx-auto"><span class="bg-dark px-2 py-1 rounded">{{ event.event_name }}</span></h3>
+                    </div>
+                </div>
             </a>
         </div>
+
         {% endfor %}
+
+    {% else %}
+        <p>No Albums are available.</p>
+    {% endif %}
     </div>
 </div>
-
-{% else %}
-<div class="container justify-content-center my-4">
-    <div class="row">
-            <h2 class="h6 text-center">Oops!</h2>
-    </div>
-</div>
-
-<div class="container">
-        <p>No photos are available.</p>
-</div>
-{% endif %}
 
 {% endblock %}

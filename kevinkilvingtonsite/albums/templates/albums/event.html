@@ -1,25 +1,34 @@
 {% extends "partials/base_page.html" %}
-{% block title %}{{ event.id }}{% endblock %}
+{% block title %}{{ event_name.0 }}{% endblock %}
 
 {% load static %}
 
 {% block content %}
 
-{% if album_selected %}
-    {% for album in album_name %}
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'albums' %}">Albums</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'events' event_selected.0.photo_album.id %}">{{ event_selected.0.photo_album }}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ event_name.0 }}</li>
+    </ol>
+  </nav>
+
+
+
 <div class="container justify-content-center my-4">
     <div class="row">
-            <h2 class="h2 text-center">{{ album.Album_name }}</h2>
+            <h2 class="h2 text-center">{{ event_name.0 }}</h2>
     </div>
 </div>
-{% endfor %}
 
+{% if event_selected %}
 <div class="container mx-auto mb-3">
     <div class="grid p-0 mx-auto">
-        {% for picture in album_selected %}
+        {% for picture in event_selected %}
         <div class="grid-item--width2">
             <a href="{{ picture.photo_img.url }}"  data-lightbox="home-photos">
-                <p>{{ picture.event_name.event_name }}</p>
+                <p>{{ picture.event_selected.event_name }}</p>
                 <img src="{{ picture.photo_img.url }}" class="card-img-top p-1"></img>
             </a>
         </div>
