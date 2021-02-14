@@ -1,0 +1,6 @@
+{{ f_name }} {{ l_name }} has requested that you reach out to them! 
+
+Client Notes:
+{{ client_notes }}
+
+Please reach out to them via {{ email_address }} or {{ phone_number }} with in the next 24 hours!

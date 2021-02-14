@@ -1,8 +1,10 @@
-from django.http.response import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
-from django.core.mail import send_mail
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import render
+from django.core.mail import send_mail, BadHeaderError
 from django.utils import timezone
 from django.contrib import messages
+from django.template.loader import render_to_string
+
 
 from .models import Contact
 
@@ -24,7 +26,34 @@ def contact(request):
             )
             new_contact.save()
 
+            msg_to_k_plain = render_to_string('contact/newcontact.txt', {"newcontact": new_contact})
+            msg_to_k_html = render_to_string('contact/newcontact.html', {"newcontact": new_contact})
+            msg_to_c_plain = render_to_string('contact/confirmation.txt', {"newcontact": new_contact})
+            msg_to_c_html = render_to_string('contact/confirmation.html', {"newcontact": new_contact})
+
+            try:
             
+                send_mail(
+                'Customer Contact Request',
+                msg_to_k_plain,
+                'info.donotreply@kevinkilvington.com',
+                ['kevin@kevinkilvington.com'],
+                html_message=msg_to_k_html,
+                fail_silently=False,
+                )
+
+                send_mail(
+                    'Thank you for your request!',
+                    msg_to_c_plain,
+                    'info.donotreply@kevinkilvington.com',
+                    [new_contact.email_address],
+                    html_message=msg_to_c_html,
+                    fail_silently=False,
+                )
+            except BadHeaderError:
+                messages.warning(request, 'Invailid Header Found')
+                return HttpResponseRedirect('/contact', {'new_contact': new_contact})
+
             messages.success(request, 'Thank you, I will reach out to you as soon as I can!')
             return HttpResponseRedirect('/contact', {'new_contact': new_contact})
 
