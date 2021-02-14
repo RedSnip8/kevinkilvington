@@ -8,3 +8,6 @@ class Photographer(models.Model):
     bio = TextField(max_length=1000)
     photo = ImageField(upload_to='images/%Y/%m/%d/')
     is_active = BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = "About Profiles"

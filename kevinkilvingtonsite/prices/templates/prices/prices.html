@@ -1,6 +1,26 @@
-{% load static %}
 {% extends "partials/base_page.html" %}
 {% block title %}Prices{% endblock %}
+
 {% block content %}
-    <p>Hello</p>
+<div class="container my-3">
+    <div class="row text-center">
+        <h2>Services and Prices</h2>
+    </div>
+</div>
+<div class="list-group mb-3 p-4">
+    {% if services_list %}
+        {% for service in services_list %}
+        <a href="{% url 'contact' %}" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ service.service_name }}</h5>
+                <p class="text-dark">${{ service.price }}</p>
+            </div>
+            <p class="mb-1">{{ service.service_description }}</p>
+            <small class="text-muted">Click to find out more</small>
+        </a>
+        {% endfor %}
+    {% else %}
+        <p>No Services at this time. Please check back.</p>
+    {% endif %}
+</div> 
 {% endblock %}

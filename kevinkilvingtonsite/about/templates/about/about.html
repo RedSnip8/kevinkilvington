@@ -1,16 +1,41 @@
-{% load static %}
 {% extends "partials/base_page.html" %}
 {% block title %}About{% endblock %}
+
+{% load static %}
+
 {% block content %}
 
-{% if photographer_list %}
-    <ul>
-    {% for photographer in photographer_list %}
-        <li>{{ photographer.first_name}}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No photographers are available.</p>
-{% endif %}
+<div class="container my-3">
+    <div class="row text-center">
+        <h2>About Me</h2>
+    </div>
+</div>
+
+<div class="container my-3 mx-auto p-2">
+    <div class="row justify-content-center">
+    {% if photographer_list %}
+        {% for photographer in photographer_list %}
+            <div class="col-md-auto">
+                <img src="{{ photographer.photo.url }}" alt="" class="profile_photo">
+                
+            </div>
+
+            <div class="col">
+                <h4>{{ photographer.first_name}} {{ photographer.last_name }}</h4>
+                <p class="text-muted">
+                <i class="fas fa-map-pin text-muted mb-1"></i> <small> Haddonfield, NJ 08033</small></p>
+            <hr>
+                <p>
+                    {{ photographer.bio }}
+                </p>
+                <a href="{% url 'contact' %}" role="button" class="btn btn-outline-primary">Contact Me</a>
+            </div>
+        {% endfor %}
+    
+    {% else %}
+        <p>No photographers are available.</p>
+    {% endif %}
+    </div> 
+</div>
 
 {% endblock %}

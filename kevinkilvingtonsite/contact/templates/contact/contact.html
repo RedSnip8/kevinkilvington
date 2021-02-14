@@ -1,9 +1,32 @@
 {% extends "partials/base_page.html" %}
 
 {% block title %}Contact{% endblock %}
-{% load static %}
+
 {% block content %}
-    
+
+{% if messages %}
+  {% for message in messages %}
+    <div id="message" class="container">
+      <div class="alert alert-{{ message.tags }} alert-dismissible text-center" role="alert">
+        <strong>
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            Error: 
+          {% else %}
+            {{ message.tags|title }}
+          {% endif %}
+        </strong>
+        {{ message }}
+      </div>
+    </div>
+  {% endfor %}
+{% endif %}
+
+<div class="container my-3">
+    <div class="row text-center">
+        <h2>Contact Request</h2>
+    </div>
+</div>
+
     <!-- Form -->
 <div class="d-flex justify-content-center">
     <form action="{% url 'contact' %}" method="POST" role="form">

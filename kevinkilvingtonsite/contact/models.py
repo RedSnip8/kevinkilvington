@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.core.validators import RegexValidator
 
 from django.db.models.fields import CharField, DateTimeField, EmailField, TextField
 
@@ -11,5 +12,5 @@ class Contact(models.Model):
     client_notes = TextField(blank=True)
     request_date = DateTimeField(default=datetime.now, blank=True)
 
-    def __str__(self) -> str:
-        return (self.f_name + " " + self.l_name)
+    class Meta:
+        verbose_name = 'New Lead'

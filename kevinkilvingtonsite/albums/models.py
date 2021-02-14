@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import CharField
-from django.db.models.fields import BooleanField, CharField
+from django.db.models.fields import BooleanField, CharField, DateTimeField
 
 class Album(models.Model):
     Album_name = CharField(max_length=100)
@@ -8,3 +8,14 @@ class Album(models.Model):
 
     def __str__(self) -> str:
         return self.Album_name
+
+class Events(models.Model):
+    event_name = CharField(max_length=200)
+    event_year = CharField(max_length=4)
+    is_active = BooleanField(default=True)
+
+    class Meta:
+        verbose_name_plural = "Events"
+
+    def __str__(self) -> str:
+        return self.event_name

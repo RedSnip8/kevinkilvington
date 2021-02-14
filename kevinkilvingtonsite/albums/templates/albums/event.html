@@ -1,0 +1,51 @@
+{% extends "partials/base_page.html" %}
+{% block title %}{{ event_name.0 }}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'albums' %}">Albums</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'events' event_selected.0.photo_album.id %}">{{ event_selected.0.photo_album }}</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ event_name.0 }}</li>
+    </ol>
+  </nav>
+
+
+
+<div class="container justify-content-center my-4">
+    <div class="row">
+            <h2 class="h2 text-center">{{ event_name.0 }}</h2>
+    </div>
+</div>
+
+{% if event_selected %}
+<div class="container mx-auto mb-3">
+    <div class="grid p-0 mx-auto">
+        {% for picture in event_selected %}
+        <div class="grid-item--width2">
+            <a href="{{ picture.photo_img.url }}"  data-lightbox="home-photos">
+                <p>{{ picture.event_selected.event_name }}</p>
+                <img src="{{ picture.photo_img.url }}" class="card-img-top p-1"></img>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% else %}
+<div class="container justify-content-center my-4">
+    <div class="row">
+            <h2 class="h6 text-center">Oops!</h2>
+    </div>
+</div>
+
+<div class="container">
+        <p>No photos are available.</p>
+</div>
+{% endif %}
+
+{% endblock %}
