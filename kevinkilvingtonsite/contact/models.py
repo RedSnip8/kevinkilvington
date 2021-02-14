@@ -11,3 +11,6 @@ class Contact(models.Model):
     phone_number = CharField(max_length=10)
     client_notes = TextField(blank=True)
     request_date = DateTimeField(default=datetime.now, blank=True)
+
+    class Meta:
+        verbose_name = 'New Lead'

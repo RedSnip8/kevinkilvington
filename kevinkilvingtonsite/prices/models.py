@@ -7,3 +7,7 @@ class Services(models.Model):
     service_description = CharField(max_length=1000)
     price = DecimalField(max_digits=6, decimal_places=2)
     is_availible = BooleanField(default=True)
+
+    class Meta:
+        verbose_name = 'Service'
+        verbose_name_plural = "Services"

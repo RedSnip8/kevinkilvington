@@ -14,5 +14,8 @@ class Events(models.Model):
     event_year = CharField(max_length=4)
     is_active = BooleanField(default=True)
 
+    class Meta:
+        verbose_name_plural = "Events"
+
     def __str__(self) -> str:
         return self.event_name
